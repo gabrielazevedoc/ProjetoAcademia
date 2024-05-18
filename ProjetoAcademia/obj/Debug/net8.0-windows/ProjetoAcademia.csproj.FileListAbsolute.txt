@@ -4,7 +4,6 @@ C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\bin\Debug\net
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\bin\Debug\net8.0-windows\ProjetoAcademia.dll
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\bin\Debug\net8.0-windows\ProjetoAcademia.pdb
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.Properties.Resources.resources
-C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.Form1.resources
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.csproj.GenerateResource.cache
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.AssemblyInfoInputs.cache
@@ -16,3 +15,4 @@ C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.pdb
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.genruntimeconfig.cache
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ref\ProjetoAcademia.dll
+C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.Login.resources
