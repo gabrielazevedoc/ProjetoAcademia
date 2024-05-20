@@ -16,3 +16,5 @@ C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.genruntimeconfig.cache
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ref\ProjetoAcademia.dll
 C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.Login.resources
+C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.View.Aluno_screen.resources
+C:\Users\gabri\OneDrive\Documentos\ProjetoAcademia\ProjetoAcademia\obj\Debug\net8.0-windows\ProjetoAcademia.View.Professor_screen.resources
