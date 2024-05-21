@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace ProjetoAcademia.View
 {
-    public partial class Professor_screen : Form
+    public partial class Professor_treino : Form
     {
-        public Professor_screen()
+        public Professor_treino()
         {
             InitializeComponent();
-        }
-
-        private void Professor_screen_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

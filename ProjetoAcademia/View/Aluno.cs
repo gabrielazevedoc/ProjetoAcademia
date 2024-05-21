@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjetoAcademia.View
 {
-    public partial class Aluno_screen : Form
+    public partial class Aluno : Form
     {
-        public Aluno_screen()
+        public Aluno()
         {
             InitializeComponent();
         }

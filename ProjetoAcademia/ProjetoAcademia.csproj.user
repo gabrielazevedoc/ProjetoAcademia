@@ -4,10 +4,13 @@
     <Compile Update="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\Aluno_screen.cs">
+    <Compile Update="View\Aluno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\Professor_screen.cs">
+    <Compile Update="View\Professor_aluno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\Professor_treino.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

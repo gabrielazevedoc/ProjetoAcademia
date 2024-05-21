@@ -1,6 +1,6 @@
 ﻿namespace ProjetoAcademia.View
 {
-    partial class Professor_screen
+    partial class Professor
     {
         /// <summary>
         /// Required designer variable.
@@ -47,6 +47,7 @@
             textBox8 = new TextBox();
             label9 = new Label();
             comboBox1 = new ComboBox();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -245,12 +246,21 @@
             comboBox1.Size = new Size(161, 26);
             comboBox1.TabIndex = 25;
             // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.Window;
+            panel2.Location = new Point(486, 120);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(10, 373);
+            panel2.TabIndex = 26;
+            // 
             // Professor_screen
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.WindowFrame;
             ClientSize = new Size(994, 540);
+            Controls.Add(panel2);
             Controls.Add(comboBox1);
             Controls.Add(textBox8);
             Controls.Add(label9);
@@ -302,5 +312,6 @@
         private TextBox textBox8;
         private Label label9;
         private ComboBox comboBox1;
+        private Panel panel2;
     }
 }

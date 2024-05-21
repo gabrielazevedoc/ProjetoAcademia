@@ -1,6 +1,6 @@
 ﻿namespace ProjetoAcademia.View
 {
-    partial class Aluno_screen
+    partial class Aluno
     {
         /// <summary>
         /// Required designer variable.
