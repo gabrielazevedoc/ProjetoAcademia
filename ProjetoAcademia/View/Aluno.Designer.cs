@@ -28,112 +28,101 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            label1 = new Label();
-            btn_showtreino = new Button();
-            btn_imc = new Button();
-            button3 = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             btn_sair = new Button();
-            panel1.SuspendLayout();
+            label1 = new Label();
+            listView1 = new ListView();
+            label2 = new Label();
+            listView2 = new ListView();
+            btn_logout = new Button();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.Window;
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(930, 100);
-            panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = SystemColors.Window;
-            label1.FlatStyle = FlatStyle.Popup;
-            label1.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.WindowFrame;
-            label1.Location = new Point(365, 33);
-            label1.Name = "label1";
-            label1.Size = new Size(234, 37);
-            label1.TabIndex = 0;
-            label1.Text = "Área do Aluno";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // btn_showtreino
-            // 
-            btn_showtreino.Location = new Point(44, 146);
-            btn_showtreino.Name = "btn_showtreino";
-            btn_showtreino.Size = new Size(199, 37);
-            btn_showtreino.TabIndex = 1;
-            btn_showtreino.Text = "Visualizar treino";
-            btn_showtreino.UseVisualStyleBackColor = true;
-            // 
-            // btn_imc
-            // 
-            btn_imc.Location = new Point(44, 213);
-            btn_imc.Name = "btn_imc";
-            btn_imc.Size = new Size(199, 37);
-            btn_imc.TabIndex = 2;
-            btn_imc.Text = "Calcular IMC";
-            btn_imc.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(44, 279);
-            button3.Name = "button3";
-            button3.Size = new Size(199, 54);
-            button3.TabIndex = 3;
-            button3.Text = "Calcular Taxa de metabolismo basal";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Location = new Point(313, 146);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(573, 351);
-            flowLayoutPanel1.TabIndex = 4;
             // 
             // btn_sair
             // 
-            btn_sair.Location = new Point(44, 460);
+            btn_sair.Location = new Point(30, 533);
             btn_sair.Name = "btn_sair";
-            btn_sair.Size = new Size(82, 37);
+            btn_sair.Size = new Size(74, 28);
             btn_sair.TabIndex = 5;
             btn_sair.Text = "Sair";
             btn_sair.UseVisualStyleBackColor = true;
             // 
-            // Aluno_screen
+            // label1
             // 
-            AutoScaleDimensions = new SizeF(9F, 18F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.WindowFrame;
-            ClientSize = new Size(929, 547);
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.ForeColor = Color.Transparent;
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(117, 21);
+            label1.TabIndex = 7;
+            label1.Text = "Dados pessoais";
+            // 
+            // listView1
+            // 
+            listView1.Font = new Font("Segoe UI", 12F);
+            listView1.Location = new Point(12, 30);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(875, 152);
+            listView1.TabIndex = 8;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.ForeColor = Color.Transparent;
+            label2.Location = new Point(12, 198);
+            label2.Name = "label2";
+            label2.Size = new Size(53, 21);
+            label2.TabIndex = 9;
+            label2.Text = "Treino";
+            // 
+            // listView2
+            // 
+            listView2.Font = new Font("Segoe UI", 12F);
+            listView2.Location = new Point(12, 219);
+            listView2.Name = "listView2";
+            listView2.Size = new Size(875, 220);
+            listView2.TabIndex = 10;
+            listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // btn_logout
+            // 
+            btn_logout.BackColor = Color.Black;
+            btn_logout.Font = new Font("Segoe UI", 12F);
+            btn_logout.ForeColor = Color.Transparent;
+            btn_logout.Location = new Point(806, 484);
+            btn_logout.Name = "btn_logout";
+            btn_logout.Size = new Size(81, 29);
+            btn_logout.TabIndex = 11;
+            btn_logout.Text = "Sair";
+            btn_logout.UseVisualStyleBackColor = false;
+            // 
+            // Aluno
+            // 
+            AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.Gray;
+            ClientSize = new Size(899, 525);
+            Controls.Add(btn_logout);
+            Controls.Add(listView2);
+            Controls.Add(label2);
+            Controls.Add(listView1);
+            Controls.Add(label1);
             Controls.Add(btn_sair);
-            Controls.Add(flowLayoutPanel1);
-            Controls.Add(button3);
-            Controls.Add(btn_imc);
-            Controls.Add(btn_showtreino);
-            Controls.Add(panel1);
             Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
-            Name = "Aluno_screen";
+            MaximizeBox = false;
+            Name = "Aluno";
             Text = "Treino";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
-        private Label label1;
-        private Button btn_showtreino;
-        private Button btn_imc;
-        private Button button3;
-        private FlowLayoutPanel flowLayoutPanel1;
         private Button btn_sair;
+        private Label label1;
+        private ListView listView1;
+        private Label label2;
+        private ListView listView2;
+        private Button btn_logout;
     }
 }

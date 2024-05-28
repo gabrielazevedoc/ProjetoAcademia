@@ -16,5 +16,10 @@ namespace ProjetoAcademia.View
         {
             InitializeComponent();
         }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

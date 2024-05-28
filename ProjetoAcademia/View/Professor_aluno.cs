@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjetoAcademia.View
 {
-    public partial class Professor : Form
+    public partial class Professor_aluno : Form
     {
-        public Professor()
+        public Professor_aluno()
         {
             InitializeComponent();
         }
