@@ -30,17 +30,17 @@
         {
             btn_cadastrar = new Button();
             label2 = new Label();
-            textBox1 = new TextBox();
-            textBox3 = new TextBox();
+            input_nome = new TextBox();
+            input_CPF = new TextBox();
             label4 = new Label();
-            textBox5 = new TextBox();
+            input_peso = new TextBox();
             label6 = new Label();
-            textBox6 = new TextBox();
+            input_altura = new TextBox();
             label7 = new Label();
             label8 = new Label();
             textBox8 = new TextBox();
             label9 = new Label();
-            comboBox1 = new ComboBox();
+            input_sexo = new ComboBox();
             btn_imc = new Button();
             btn_showtreino = new Button();
             btn_deletar = new Button();
@@ -71,19 +71,19 @@
             label2.TextAlign = ContentAlignment.MiddleLeft;
             label2.Click += label2_Click;
             // 
-            // textBox1
+            // input_nome
             // 
-            textBox1.Location = new Point(12, 96);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(190, 26);
-            textBox1.TabIndex = 10;
+            input_nome.Location = new Point(12, 96);
+            input_nome.Name = "input_nome";
+            input_nome.Size = new Size(190, 26);
+            input_nome.TabIndex = 10;
             // 
-            // textBox3
+            // input_CPF
             // 
-            textBox3.Location = new Point(12, 152);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(190, 26);
-            textBox3.TabIndex = 14;
+            input_CPF.Location = new Point(12, 152);
+            input_CPF.Name = "input_CPF";
+            input_CPF.Size = new Size(190, 26);
+            input_CPF.TabIndex = 14;
             // 
             // label4
             // 
@@ -98,12 +98,12 @@
             label4.Text = "CPF";
             label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // textBox5
+            // input_peso
             // 
-            textBox5.Location = new Point(12, 210);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(190, 26);
-            textBox5.TabIndex = 18;
+            input_peso.Location = new Point(12, 210);
+            input_peso.Name = "input_peso";
+            input_peso.Size = new Size(190, 26);
+            input_peso.TabIndex = 18;
             // 
             // label6
             // 
@@ -118,12 +118,12 @@
             label6.Text = "Peso";
             label6.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // textBox6
+            // input_altura
             // 
-            textBox6.Location = new Point(12, 269);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(190, 26);
-            textBox6.TabIndex = 20;
+            input_altura.Location = new Point(12, 269);
+            input_altura.Name = "input_altura";
+            input_altura.Size = new Size(190, 26);
+            input_altura.TabIndex = 20;
             // 
             // label7
             // 
@@ -171,14 +171,14 @@
             label9.Text = "Treino";
             label9.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // input_sexo
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Masculino", "Feminino" });
-            comboBox1.Location = new Point(12, 325);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(190, 26);
-            comboBox1.TabIndex = 25;
+            input_sexo.FormattingEnabled = true;
+            input_sexo.Items.AddRange(new object[] { "Masculino", "Feminino" });
+            input_sexo.Location = new Point(12, 325);
+            input_sexo.Name = "input_sexo";
+            input_sexo.Size = new Size(190, 26);
+            input_sexo.TabIndex = 25;
             // 
             // btn_imc
             // 
@@ -237,17 +237,17 @@
             Controls.Add(btn_deletar);
             Controls.Add(btn_imc);
             Controls.Add(btn_showtreino);
-            Controls.Add(comboBox1);
+            Controls.Add(input_sexo);
             Controls.Add(textBox8);
             Controls.Add(label9);
             Controls.Add(label8);
-            Controls.Add(textBox6);
+            Controls.Add(input_altura);
             Controls.Add(label7);
-            Controls.Add(textBox5);
+            Controls.Add(input_peso);
             Controls.Add(label6);
-            Controls.Add(textBox3);
+            Controls.Add(input_CPF);
             Controls.Add(label4);
-            Controls.Add(textBox1);
+            Controls.Add(input_nome);
             Controls.Add(label2);
             Controls.Add(btn_cadastrar);
             Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -262,17 +262,17 @@
         #endregion
         private Button btn_cadastrar;
         private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox3;
+        private TextBox input_nome;
+        private TextBox input_CPF;
         private Label label4;
-        private TextBox textBox5;
+        private TextBox input_peso;
         private Label label6;
-        private TextBox textBox6;
+        private TextBox input_altura;
         private Label label7;
         private Label label8;
         private TextBox textBox8;
         private Label label9;
-        private ComboBox comboBox1;
+        private ComboBox input_sexo;
         private Button btn_imc;
         private Button btn_showtreino;
         private Button btn_deletar;
