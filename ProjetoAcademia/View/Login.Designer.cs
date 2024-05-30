@@ -51,7 +51,6 @@
             Logo.SizeMode = PictureBoxSizeMode.Zoom;
             Logo.TabIndex = 0;
             Logo.TabStop = false;
-            Logo.Click += pictureBox1_Click;
             // 
             // label_nome
             // 
@@ -65,7 +64,6 @@
             label_nome.TabIndex = 1;
             label_nome.Text = "Nome";
             label_nome.TextAlign = ContentAlignment.MiddleCenter;
-            label_nome.Click += label1_Click;
             // 
             // input_name
             // 
@@ -87,7 +85,6 @@
             label_CPF.TabIndex = 1;
             label_CPF.Text = "CPF";
             label_CPF.TextAlign = ContentAlignment.MiddleCenter;
-            label_CPF.Click += label1_Click;
             // 
             // btn_login
             // 
@@ -102,6 +99,7 @@
             btn_login.TabIndex = 4;
             btn_login.Text = "Login";
             btn_login.UseVisualStyleBackColor = false;
+            btn_login.Click += btn_login_Click;
             // 
             // panel1
             // 
@@ -165,7 +163,6 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Fitness Academia";
-            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)Logo).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

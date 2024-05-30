@@ -33,9 +33,8 @@
             input_nome = new TextBox();
             input_CPF = new TextBox();
             label4 = new Label();
-            input_peso = new TextBox();
+            input_idade = new TextBox();
             label6 = new Label();
-            input_altura = new TextBox();
             label7 = new Label();
             label8 = new Label();
             textBox8 = new TextBox();
@@ -46,6 +45,7 @@
             btn_deletar = new Button();
             btn_logout = new Button();
             listView1 = new ListView();
+            input_plano = new ComboBox();
             SuspendLayout();
             // 
             // btn_cadastrar
@@ -98,12 +98,12 @@
             label4.Text = "CPF";
             label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // input_peso
+            // input_idade
             // 
-            input_peso.Location = new Point(12, 210);
-            input_peso.Name = "input_peso";
-            input_peso.Size = new Size(190, 26);
-            input_peso.TabIndex = 18;
+            input_idade.Location = new Point(12, 210);
+            input_idade.Name = "input_idade";
+            input_idade.Size = new Size(190, 26);
+            input_idade.TabIndex = 18;
             // 
             // label6
             // 
@@ -113,17 +113,10 @@
             label6.ForeColor = SystemColors.ControlLightLight;
             label6.Location = new Point(12, 188);
             label6.Name = "label6";
-            label6.Size = new Size(48, 19);
+            label6.Size = new Size(51, 19);
             label6.TabIndex = 17;
-            label6.Text = "Peso";
+            label6.Text = "Idade";
             label6.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // input_altura
-            // 
-            input_altura.Location = new Point(12, 269);
-            input_altura.Name = "input_altura";
-            input_altura.Size = new Size(190, 26);
-            input_altura.TabIndex = 20;
             // 
             // label7
             // 
@@ -133,9 +126,9 @@
             label7.ForeColor = SystemColors.ControlLightLight;
             label7.Location = new Point(12, 247);
             label7.Name = "label7";
-            label7.Size = new Size(54, 19);
+            label7.Size = new Size(53, 19);
             label7.TabIndex = 19;
-            label7.Text = "Altura";
+            label7.Text = "Plano";
             label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label8
@@ -226,12 +219,22 @@
             listView1.TabIndex = 31;
             listView1.UseCompatibleStateImageBehavior = false;
             // 
+            // input_plano
+            // 
+            input_plano.FormattingEnabled = true;
+            input_plano.Items.AddRange(new object[] { "Fitness Basic", "Fitness Plus", "Fitness Master" });
+            input_plano.Location = new Point(12, 269);
+            input_plano.Name = "input_plano";
+            input_plano.Size = new Size(190, 26);
+            input_plano.TabIndex = 32;
+            // 
             // Professor_aluno
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             ClientSize = new Size(899, 525);
+            Controls.Add(input_plano);
             Controls.Add(listView1);
             Controls.Add(btn_logout);
             Controls.Add(btn_deletar);
@@ -241,9 +244,8 @@
             Controls.Add(textBox8);
             Controls.Add(label9);
             Controls.Add(label8);
-            Controls.Add(input_altura);
             Controls.Add(label7);
-            Controls.Add(input_peso);
+            Controls.Add(input_idade);
             Controls.Add(label6);
             Controls.Add(input_CPF);
             Controls.Add(label4);
@@ -265,9 +267,8 @@
         private TextBox input_nome;
         private TextBox input_CPF;
         private Label label4;
-        private TextBox input_peso;
+        private TextBox input_idade;
         private Label label6;
-        private TextBox input_altura;
         private Label label7;
         private Label label8;
         private TextBox textBox8;
@@ -278,5 +279,6 @@
         private Button btn_deletar;
         private Button btn_logout;
         private ListView listView1;
+        private ComboBox input_plano;
     }
 }

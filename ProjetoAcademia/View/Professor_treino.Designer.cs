@@ -37,6 +37,7 @@
             input_equipamento = new TextBox();
             label2 = new Label();
             btn_cadastrar = new Button();
+            input_rep = new TextBox();
             SuspendLayout();
             // 
             // listView1
@@ -84,7 +85,6 @@
             btn_showtreino.TabIndex = 45;
             btn_showtreino.Text = "Cadastrar aluno";
             btn_showtreino.UseVisualStyleBackColor = true;
-            
             // 
             // label4
             // 
@@ -103,7 +103,7 @@
             // 
             input_equipamento.Location = new Point(12, 96);
             input_equipamento.Name = "input_equipamento";
-            input_equipamento.Size = new Size(190, 23);
+            input_equipamento.Size = new Size(180, 23);
             input_equipamento.TabIndex = 34;
             // 
             // label2
@@ -128,12 +128,20 @@
             btn_cadastrar.Text = "Cadastrar";
             btn_cadastrar.UseVisualStyleBackColor = true;
             // 
+            // input_rep
+            // 
+            input_rep.Location = new Point(12, 152);
+            input_rep.Name = "input_rep";
+            input_rep.Size = new Size(180, 23);
+            input_rep.TabIndex = 50;
+            // 
             // Professor_treino
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             ClientSize = new Size(899, 525);
+            Controls.Add(input_rep);
             Controls.Add(listView1);
             Controls.Add(btn_logout);
             Controls.Add(btn_deletar);
@@ -169,5 +177,6 @@
         private TextBox input_equipamento;
         private Label label2;
         private Button btn_cadastrar;
+        private TextBox input_rep;
     }
 }
