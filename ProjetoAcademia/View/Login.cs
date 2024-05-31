@@ -1,6 +1,6 @@
 
 using ProjetoAcademia.View;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace ProjetoAcademia
 {
@@ -38,7 +38,7 @@ namespace ProjetoAcademia
         private bool autenticarUsuario(string nome, string CPF)
         {
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 try
                 {
@@ -46,7 +46,7 @@ namespace ProjetoAcademia
 
                     // Verificar se a tabela de usuários está vazia
                     string checkEmptyQuery = "SELECT COUNT(1) FROM tb_alunos";
-                    SqlCommand checkEmptyCommand = new SqlCommand(checkEmptyQuery, conn);
+                    MySqlCommand checkEmptyCommand = new MySqlCommand(checkEmptyQuery, conn);
                     int userCount = Convert.ToInt32(checkEmptyCommand.ExecuteScalar());
 
                     if (userCount == 0)
@@ -64,7 +64,7 @@ namespace ProjetoAcademia
 
                     // Se houver usuários no banco de dados, verificar as credenciais fornecidas
                     string query = "SELECT COUNT(1) FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
-                    SqlCommand cmd = new SqlCommand(query, conn);
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@nome", nome);
                     cmd.Parameters.AddWithValue("@CPF", CPF);
 
