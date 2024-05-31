@@ -49,19 +49,18 @@ namespace ProjetoAcademia
                     MySqlCommand checkEmptyCommand = new MySqlCommand(checkEmptyQuery, conn);
                     int userCount = Convert.ToInt32(checkEmptyCommand.ExecuteScalar());
 
-                    if (userCount == 0)
+                    if(userCount == 0)
                     {
-                        // Se não houver usuários no banco de dados, permitir login com admin/admin
-                        if (nome == "admin" && CPF == "admin")
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
+                        return false;
                     }
-
+                    else
+                    {
+                        if( nome == "admin" && CPF == "admin")
+                            {
+                                return true;
+                            }
+                    }
+                   
                     // Se houver usuários no banco de dados, verificar as credenciais fornecidas
                     string query = "SELECT COUNT(1) FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
