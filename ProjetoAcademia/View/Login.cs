@@ -32,6 +32,8 @@ namespace ProjetoAcademia
             {
                 // Login failed, show error message
                 MessageBox.Show("Nome ou CPF inválidos");
+                input_name.Text = string.Empty; 
+                input_CPF.Text = string.Empty;
             }
         }
 
@@ -72,7 +74,7 @@ namespace ProjetoAcademia
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred: " + ex.Message);
+                    MessageBox.Show("Ocorreu um erro: " + ex.Message);
                     return false;
                 }
             }
