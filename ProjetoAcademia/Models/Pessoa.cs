@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace ProjetoAcademia.Models
 {
-    public class Pessoa
+    internal class Pessoa
     {
         public string Nome { get; set; }
         public string CPF { get; set; }
         public int Idade { get; set; }
+        public DateTime Nascimento { get; set; }
         public string Sexo { get; set; }
 
         public Pessoa() 
         { 
         }
 
-        public Pessoa(string nome, string cpf, int idade, string sexo)
+        public Pessoa(string nome, string cpf, int idade, DateTime nascimento, string sexo)
         {
             Nome = nome;
             CPF = cpf;
             Idade = idade;
+            Nascimento = nascimento;
             Sexo = sexo;
         }
     }
