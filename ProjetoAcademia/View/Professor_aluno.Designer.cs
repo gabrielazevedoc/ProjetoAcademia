@@ -44,12 +44,14 @@
             btn_showtreino = new Button();
             btn_deletar = new Button();
             btn_logout = new Button();
-            listView1 = new ListView();
             input_plano = new ComboBox();
+            gv_alunos = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)gv_alunos).BeginInit();
             SuspendLayout();
             // 
             // btn_cadastrar
             // 
+            btn_cadastrar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_cadastrar.Location = new Point(12, 440);
             btn_cadastrar.Name = "btn_cadastrar";
             btn_cadastrar.Size = new Size(92, 37);
@@ -69,7 +71,6 @@
             label2.TabIndex = 9;
             label2.Text = "Nome";
             label2.TextAlign = ContentAlignment.MiddleLeft;
-            label2.Click += label2_Click;
             // 
             // input_nome
             // 
@@ -175,7 +176,7 @@
             // 
             // btn_imc
             // 
-            btn_imc.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_imc.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_imc.Location = new Point(154, 12);
             btn_imc.Name = "btn_imc";
             btn_imc.Size = new Size(132, 27);
@@ -185,7 +186,7 @@
             // 
             // btn_showtreino
             // 
-            btn_showtreino.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_showtreino.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_showtreino.Location = new Point(12, 12);
             btn_showtreino.Name = "btn_showtreino";
             btn_showtreino.Size = new Size(136, 27);
@@ -195,6 +196,7 @@
             // 
             // btn_deletar
             // 
+            btn_deletar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_deletar.Location = new Point(110, 440);
             btn_deletar.Name = "btn_deletar";
             btn_deletar.Size = new Size(92, 37);
@@ -204,20 +206,13 @@
             // 
             // btn_logout
             // 
+            btn_logout.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btn_logout.Location = new Point(826, 483);
             btn_logout.Name = "btn_logout";
             btn_logout.Size = new Size(61, 30);
             btn_logout.TabIndex = 30;
             btn_logout.Text = "Sair";
             btn_logout.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            listView1.Location = new Point(208, 96);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(679, 381);
-            listView1.TabIndex = 31;
-            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // input_plano
             // 
@@ -228,14 +223,23 @@
             input_plano.Size = new Size(190, 26);
             input_plano.TabIndex = 32;
             // 
+            // gv_alunos
+            // 
+            gv_alunos.BackgroundColor = SystemColors.ButtonHighlight;
+            gv_alunos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gv_alunos.Location = new Point(229, 96);
+            gv_alunos.Name = "gv_alunos";
+            gv_alunos.Size = new Size(658, 381);
+            gv_alunos.TabIndex = 33;
+            // 
             // Professor_aluno
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             ClientSize = new Size(899, 525);
+            Controls.Add(gv_alunos);
             Controls.Add(input_plano);
-            Controls.Add(listView1);
             Controls.Add(btn_logout);
             Controls.Add(btn_deletar);
             Controls.Add(btn_imc);
@@ -256,7 +260,8 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Professor_aluno";
             Text = "Professor_screen";
-            Load += Professor_screen_Load;
+            Load += Professor_aluno_Load;
+            ((System.ComponentModel.ISupportInitialize)gv_alunos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -278,7 +283,7 @@
         private Button btn_showtreino;
         private Button btn_deletar;
         private Button btn_logout;
-        private ListView listView1;
         private ComboBox input_plano;
+        private DataGridView gv_alunos;
     }
 }
