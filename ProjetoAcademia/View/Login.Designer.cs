@@ -149,6 +149,7 @@
             btn_logout.TabIndex = 6;
             btn_logout.Text = "Sair";
             btn_logout.UseVisualStyleBackColor = false;
+            btn_logout.Click += btn_logout_Click;
             // 
             // Login
             // 

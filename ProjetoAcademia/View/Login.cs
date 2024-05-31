@@ -78,6 +78,17 @@ namespace ProjetoAcademia
                 }
             }
         }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            var confirmarSaida = MessageBox.Show("Tem certeza de que deseja sair?",
+                                    "Confirmar Saída",
+                                    MessageBoxButtons.YesNo);
+            if (confirmarSaida == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
-    
+
 }
