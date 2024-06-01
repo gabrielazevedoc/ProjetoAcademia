@@ -14,8 +14,8 @@ namespace ProjetoAcademia.Models
         public DateTime Nascimento { get; set; }
         public string Sexo { get; set; }
 
-        public Pessoa() 
-        { 
+        public Pessoa()
+        {
         }
 
         public Pessoa(string nome, string cpf, int idade, DateTime nascimento, string sexo)
@@ -26,5 +26,19 @@ namespace ProjetoAcademia.Models
             Nascimento = nascimento;
             Sexo = sexo;
         }
+
+        public static int CalcularIdade(DateTime Nascimento)
+        {
+
+            int idade = Convert.ToInt32(DateTime.Now.Year - Nascimento.Year);
+
+
+            if (DateTime.Now.DayOfYear < Nascimento.DayOfYear)
+            {
+                idade = idade - 1;
+            }
+            return idade;
+        }
     }
 }
+  

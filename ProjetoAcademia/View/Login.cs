@@ -1,6 +1,7 @@
 
 using ProjetoAcademia.View;
 using MySql.Data.MySqlClient;
+using System.Drawing.Text;
 
 namespace ProjetoAcademia
 {
@@ -10,6 +11,13 @@ namespace ProjetoAcademia
             System.Configuration.ConfigurationManager
             .ConnectionStrings["MySqlConnectionString"]
             .ConnectionString;
+
+        private enum LoginResult
+        {
+            Aluno,
+            Professor,
+            Invalido
+        }
 
         public Login()
         {
@@ -21,23 +29,27 @@ namespace ProjetoAcademia
             string nome = input_name.Text;
             string CPF = input_CPF.Text;
 
-            if (autenticarUsuario(nome, CPF))
+            switch (autenticarUsuario(nome, CPF))
             {
-                // Login successful, open the next form
-                Aluno aluno = new Aluno();
-                aluno.Show();
-                this.Hide();
-            }
-            else
-            {
-                // Login failed, show error message
-                MessageBox.Show("Nome ou CPF inválidos");
-                input_name.Text = string.Empty; 
-                input_CPF.Text = string.Empty;
+                case LoginResult.Aluno:
+                    Aluno aluno = new Aluno();
+                    aluno.Show();
+                    this.Hide();
+                    break;
+                case LoginResult.Professor:
+                    Professor_aluno professor_aluno = new Professor_aluno();
+                    professor_aluno.Show();
+                    this.Hide();
+                    break;
+                case LoginResult.Invalido:
+                    MessageBox.Show("Nome ou CPF inválidos");
+                    input_name.Text = string.Empty;
+                    input_CPF.Text = string.Empty;
+                    break;
             }
         }
 
-        private bool autenticarUsuario(string nome, string CPF)
+        private LoginResult autenticarUsuario(string nome, string CPF)
         {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -51,18 +63,18 @@ namespace ProjetoAcademia
                     MySqlCommand checkEmptyCommand = new MySqlCommand(checkEmptyQuery, conn);
                     int userCount = Convert.ToInt32(checkEmptyCommand.ExecuteScalar());
 
-                    if(userCount == 0)
+                    if (userCount == 0)
                     {
-                        return false;
+                        return LoginResult.Invalido;
                     }
                     else
                     {
-                        if( nome == "admin" && CPF == "admin")
-                            {
-                                return true;
-                            }
+                        if (nome == "admin" && CPF == "admin")
+                        {
+                            return LoginResult.Professor;
+                        }
                     }
-                   
+
                     // Se houver usuários no banco de dados, verificar as credenciais fornecidas
                     string query = "SELECT COUNT(1) FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -70,12 +82,12 @@ namespace ProjetoAcademia
                     cmd.Parameters.AddWithValue("@CPF", CPF);
 
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    return count == 1;
+                    return LoginResult.Aluno;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ocorreu um erro: " + ex.Message);
-                    return false;
+                    return LoginResult.Invalido;
                 }
             }
         }
