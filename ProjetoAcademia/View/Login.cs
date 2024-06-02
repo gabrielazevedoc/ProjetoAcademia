@@ -29,7 +29,7 @@ namespace ProjetoAcademia
             string nome = input_name.Text;
             string CPF = input_CPF.Text;
 
-            switch (autenticarUsuario(nome, CPF))
+            switch (AutenticarUsuario(nome, CPF))
             {
                 case LoginResult.Aluno:
                     Aluno aluno = new Aluno();
@@ -49,7 +49,7 @@ namespace ProjetoAcademia
             }
         }
 
-        private LoginResult autenticarUsuario(string nome, string CPF)
+        private LoginResult AutenticarUsuario(string nome, string CPF)
         {
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))

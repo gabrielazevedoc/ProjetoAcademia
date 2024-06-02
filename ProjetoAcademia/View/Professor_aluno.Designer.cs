@@ -33,11 +33,10 @@
             input_nome = new TextBox();
             input_CPF = new TextBox();
             label4 = new Label();
-            input_idade = new TextBox();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            textBox8 = new TextBox();
+            input_treino = new TextBox();
             label9 = new Label();
             input_sexo = new ComboBox();
             btn_imc = new Button();
@@ -46,6 +45,7 @@
             btn_logout = new Button();
             input_plano = new ComboBox();
             gv_alunos = new DataGridView();
+            input_data = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)gv_alunos).BeginInit();
             SuspendLayout();
             // 
@@ -58,6 +58,7 @@
             btn_cadastrar.TabIndex = 8;
             btn_cadastrar.Text = "Cadastrar";
             btn_cadastrar.UseVisualStyleBackColor = true;
+            btn_cadastrar.Click += btn_cadastrar_Click;
             // 
             // label2
             // 
@@ -99,13 +100,6 @@
             label4.Text = "CPF";
             label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // input_idade
-            // 
-            input_idade.Location = new Point(12, 210);
-            input_idade.Name = "input_idade";
-            input_idade.Size = new Size(190, 26);
-            input_idade.TabIndex = 18;
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -114,9 +108,9 @@
             label6.ForeColor = SystemColors.ControlLightLight;
             label6.Location = new Point(12, 188);
             label6.Name = "label6";
-            label6.Size = new Size(51, 19);
+            label6.Size = new Size(162, 19);
             label6.TabIndex = 17;
-            label6.Text = "Idade";
+            label6.Text = "Data de Nascimento";
             label6.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label7
@@ -145,12 +139,12 @@
             label8.Text = "Sexo";
             label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // textBox8
+            // input_treino
             // 
-            textBox8.Location = new Point(12, 383);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(190, 26);
-            textBox8.TabIndex = 24;
+            input_treino.Location = new Point(12, 383);
+            input_treino.Name = "input_treino";
+            input_treino.Size = new Size(190, 26);
+            input_treino.TabIndex = 24;
             // 
             // label9
             // 
@@ -213,6 +207,7 @@
             btn_logout.TabIndex = 30;
             btn_logout.Text = "Sair";
             btn_logout.UseVisualStyleBackColor = true;
+            btn_logout.Click += btn_logout_Click;
             // 
             // input_plano
             // 
@@ -232,12 +227,22 @@
             gv_alunos.Size = new Size(658, 381);
             gv_alunos.TabIndex = 33;
             // 
+            // input_data
+            // 
+            input_data.CalendarFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            input_data.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            input_data.Location = new Point(12, 210);
+            input_data.Name = "input_data";
+            input_data.Size = new Size(190, 25);
+            input_data.TabIndex = 34;
+            // 
             // Professor_aluno
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             ClientSize = new Size(899, 525);
+            Controls.Add(input_data);
             Controls.Add(gv_alunos);
             Controls.Add(input_plano);
             Controls.Add(btn_logout);
@@ -245,11 +250,10 @@
             Controls.Add(btn_imc);
             Controls.Add(btn_showtreino);
             Controls.Add(input_sexo);
-            Controls.Add(textBox8);
+            Controls.Add(input_treino);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(input_idade);
             Controls.Add(label6);
             Controls.Add(input_CPF);
             Controls.Add(label4);
@@ -272,11 +276,10 @@
         private TextBox input_nome;
         private TextBox input_CPF;
         private Label label4;
-        private TextBox input_idade;
         private Label label6;
         private Label label7;
         private Label label8;
-        private TextBox textBox8;
+        private TextBox input_treino;
         private Label label9;
         private ComboBox input_sexo;
         private Button btn_imc;
@@ -285,5 +288,6 @@
         private Button btn_logout;
         private ComboBox input_plano;
         private DataGridView gv_alunos;
+        private DateTimePicker input_data;
     }
 }
