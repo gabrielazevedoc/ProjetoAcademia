@@ -30,10 +30,10 @@
         {
             btn_sair = new Button();
             label1 = new Label();
-            listView1 = new ListView();
             label2 = new Label();
             listView2 = new ListView();
             btn_logout = new Button();
+            lv_aluno = new ListView();
             SuspendLayout();
             // 
             // btn_sair
@@ -55,15 +55,6 @@
             label1.Size = new Size(117, 21);
             label1.TabIndex = 7;
             label1.Text = "Dados pessoais";
-            // 
-            // listView1
-            // 
-            listView1.Font = new Font("Segoe UI", 12F);
-            listView1.Location = new Point(12, 30);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(875, 152);
-            listView1.TabIndex = 8;
-            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // label2
             // 
@@ -97,15 +88,23 @@
             btn_logout.Text = "Sair";
             btn_logout.UseVisualStyleBackColor = false;
             // 
+            // lv_aluno
+            // 
+            lv_aluno.Location = new Point(12, 33);
+            lv_aluno.Name = "lv_aluno";
+            lv_aluno.Size = new Size(875, 162);
+            lv_aluno.TabIndex = 12;
+            lv_aluno.UseCompatibleStateImageBehavior = false;
+            // 
             // Aluno
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.Gray;
             ClientSize = new Size(899, 525);
+            Controls.Add(lv_aluno);
             Controls.Add(btn_logout);
             Controls.Add(listView2);
             Controls.Add(label2);
-            Controls.Add(listView1);
             Controls.Add(label1);
             Controls.Add(btn_sair);
             Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -120,9 +119,9 @@
         #endregion
         private Button btn_sair;
         private Label label1;
-        private ListView listView1;
         private Label label2;
         private ListView listView2;
         private Button btn_logout;
+        private ListView lv_aluno;
     }
 }

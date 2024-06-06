@@ -32,9 +32,24 @@ namespace ProjetoAcademia
             switch (AutenticarUsuario(nome, CPF))
             {
                 case LoginResult.Aluno:
-                    Aluno aluno = new Aluno();
-                    aluno.Show();
-                    this.Hide();
+                    using (MySqlConnection conn = new MySqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        string query = "SELECT * FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@nome", nome);
+                        cmd.Parameters.AddWithValue("@CPF", CPF);
+
+                        MySqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            int AlunoId = reader.GetInt32("id");
+                            Aluno aluno = new Aluno(AlunoId);
+                            aluno.Show();
+                            this.Hide();
+                        }
+                        conn.Close();
+                    }
                     break;
                 case LoginResult.Professor:
                     Professor_aluno professor_aluno = new Professor_aluno();
@@ -75,13 +90,6 @@ namespace ProjetoAcademia
                         }
                     }
 
-                    // Se houver usuários no banco de dados, verificar as credenciais fornecidas
-                    string query = "SELECT COUNT(1) FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@nome", nome);
-                    cmd.Parameters.AddWithValue("@CPF", CPF);
-
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
                     return LoginResult.Aluno;
                 }
                 catch (Exception ex)

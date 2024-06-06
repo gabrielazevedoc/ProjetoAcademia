@@ -38,6 +38,7 @@
             label2 = new Label();
             btn_cadastrar = new Button();
             input_rep = new TextBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // listView1
@@ -59,12 +60,13 @@
             // 
             // btn_deletar
             // 
-            btn_deletar.Location = new Point(110, 440);
+            btn_deletar.BackColor = Color.Tomato;
+            btn_deletar.Location = new Point(15, 237);
             btn_deletar.Name = "btn_deletar";
-            btn_deletar.Size = new Size(92, 37);
+            btn_deletar.Size = new Size(82, 37);
             btn_deletar.TabIndex = 47;
             btn_deletar.Text = "Deletar";
-            btn_deletar.UseVisualStyleBackColor = true;
+            btn_deletar.UseVisualStyleBackColor = false;
             // 
             // btn_imc
             // 
@@ -121,12 +123,13 @@
             // 
             // btn_cadastrar
             // 
-            btn_cadastrar.Location = new Point(12, 440);
+            btn_cadastrar.BackColor = Color.LimeGreen;
+            btn_cadastrar.Location = new Point(15, 194);
             btn_cadastrar.Name = "btn_cadastrar";
-            btn_cadastrar.Size = new Size(92, 37);
+            btn_cadastrar.Size = new Size(82, 37);
             btn_cadastrar.TabIndex = 32;
             btn_cadastrar.Text = "Cadastrar";
-            btn_cadastrar.UseVisualStyleBackColor = true;
+            btn_cadastrar.UseVisualStyleBackColor = false;
             // 
             // input_rep
             // 
@@ -135,12 +138,22 @@
             input_rep.Size = new Size(180, 23);
             input_rep.TabIndex = 50;
             // 
+            // button1
+            // 
+            button1.Location = new Point(15, 280);
+            button1.Name = "button1";
+            button1.Size = new Size(82, 37);
+            button1.TabIndex = 51;
+            button1.Text = "Atualizar";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Professor_treino
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             ClientSize = new Size(899, 525);
+            Controls.Add(button1);
             Controls.Add(input_rep);
             Controls.Add(listView1);
             Controls.Add(btn_logout);
@@ -178,5 +191,6 @@
         private Label label2;
         private Button btn_cadastrar;
         private TextBox input_rep;
+        private Button button1;
     }
 }

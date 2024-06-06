@@ -36,8 +36,6 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            input_treino = new TextBox();
-            label9 = new Label();
             input_sexo = new ComboBox();
             btn_imc = new Button();
             btn_showtreino = new Button();
@@ -46,18 +44,22 @@
             input_plano = new ComboBox();
             gv_alunos = new DataGridView();
             input_data = new DateTimePicker();
+            dataGridView1 = new DataGridView();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)gv_alunos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // btn_cadastrar
             // 
+            btn_cadastrar.BackColor = Color.LimeGreen;
             btn_cadastrar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_cadastrar.Location = new Point(12, 440);
+            btn_cadastrar.Location = new Point(12, 342);
             btn_cadastrar.Name = "btn_cadastrar";
-            btn_cadastrar.Size = new Size(92, 37);
+            btn_cadastrar.Size = new Size(83, 37);
             btn_cadastrar.TabIndex = 8;
             btn_cadastrar.Text = "Cadastrar";
-            btn_cadastrar.UseVisualStyleBackColor = true;
+            btn_cadastrar.UseVisualStyleBackColor = false;
             btn_cadastrar.Click += btn_cadastrar_Click;
             // 
             // label2
@@ -66,7 +68,7 @@
             label2.FlatStyle = FlatStyle.Popup;
             label2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(12, 74);
+            label2.Location = new Point(12, 50);
             label2.Name = "label2";
             label2.Size = new Size(54, 19);
             label2.TabIndex = 9;
@@ -75,16 +77,18 @@
             // 
             // input_nome
             // 
-            input_nome.Location = new Point(12, 96);
+            input_nome.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            input_nome.Location = new Point(12, 70);
             input_nome.Name = "input_nome";
-            input_nome.Size = new Size(190, 26);
+            input_nome.Size = new Size(190, 23);
             input_nome.TabIndex = 10;
             // 
             // input_CPF
             // 
-            input_CPF.Location = new Point(12, 152);
+            input_CPF.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            input_CPF.Location = new Point(12, 126);
             input_CPF.Name = "input_CPF";
-            input_CPF.Size = new Size(190, 26);
+            input_CPF.Size = new Size(190, 23);
             input_CPF.TabIndex = 14;
             // 
             // label4
@@ -93,7 +97,7 @@
             label4.FlatStyle = FlatStyle.Popup;
             label4.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.ControlLightLight;
-            label4.Location = new Point(12, 130);
+            label4.Location = new Point(12, 106);
             label4.Name = "label4";
             label4.Size = new Size(42, 19);
             label4.TabIndex = 13;
@@ -106,7 +110,7 @@
             label6.FlatStyle = FlatStyle.Popup;
             label6.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = SystemColors.ControlLightLight;
-            label6.Location = new Point(12, 188);
+            label6.Location = new Point(12, 162);
             label6.Name = "label6";
             label6.Size = new Size(162, 19);
             label6.TabIndex = 17;
@@ -119,7 +123,7 @@
             label7.FlatStyle = FlatStyle.Popup;
             label7.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.ControlLightLight;
-            label7.Location = new Point(12, 247);
+            label7.Location = new Point(12, 223);
             label7.Name = "label7";
             label7.Size = new Size(53, 19);
             label7.TabIndex = 19;
@@ -132,48 +136,29 @@
             label8.FlatStyle = FlatStyle.Popup;
             label8.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.ControlLightLight;
-            label8.Location = new Point(12, 303);
+            label8.Location = new Point(12, 279);
             label8.Name = "label8";
             label8.Size = new Size(48, 19);
             label8.TabIndex = 21;
             label8.Text = "Sexo";
             label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // input_treino
-            // 
-            input_treino.Location = new Point(12, 383);
-            input_treino.Name = "input_treino";
-            input_treino.Size = new Size(190, 26);
-            input_treino.TabIndex = 24;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.FlatStyle = FlatStyle.Popup;
-            label9.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.ControlLightLight;
-            label9.Location = new Point(12, 361);
-            label9.Name = "label9";
-            label9.Size = new Size(57, 19);
-            label9.TabIndex = 23;
-            label9.Text = "Treino";
-            label9.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // input_sexo
             // 
+            input_sexo.Font = new Font("Arial", 10F);
             input_sexo.FormattingEnabled = true;
             input_sexo.Items.AddRange(new object[] { "Masculino", "Feminino" });
-            input_sexo.Location = new Point(12, 325);
+            input_sexo.Location = new Point(12, 299);
             input_sexo.Name = "input_sexo";
-            input_sexo.Size = new Size(190, 26);
+            input_sexo.Size = new Size(190, 24);
             input_sexo.TabIndex = 25;
             // 
             // btn_imc
             // 
             btn_imc.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_imc.Location = new Point(154, 12);
+            btn_imc.Location = new Point(454, 12);
             btn_imc.Name = "btn_imc";
-            btn_imc.Size = new Size(132, 27);
+            btn_imc.Size = new Size(117, 27);
             btn_imc.TabIndex = 28;
             btn_imc.Text = "Cadastrar treino";
             btn_imc.UseVisualStyleBackColor = true;
@@ -181,22 +166,23 @@
             // btn_showtreino
             // 
             btn_showtreino.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_showtreino.Location = new Point(12, 12);
+            btn_showtreino.Location = new Point(326, 12);
             btn_showtreino.Name = "btn_showtreino";
-            btn_showtreino.Size = new Size(136, 27);
+            btn_showtreino.Size = new Size(122, 27);
             btn_showtreino.TabIndex = 27;
             btn_showtreino.Text = "Cadastrar aluno";
             btn_showtreino.UseVisualStyleBackColor = true;
             // 
             // btn_deletar
             // 
+            btn_deletar.BackColor = Color.Tomato;
             btn_deletar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_deletar.Location = new Point(110, 440);
+            btn_deletar.Location = new Point(12, 385);
             btn_deletar.Name = "btn_deletar";
-            btn_deletar.Size = new Size(92, 37);
+            btn_deletar.Size = new Size(83, 37);
             btn_deletar.TabIndex = 29;
             btn_deletar.Text = "Deletar";
-            btn_deletar.UseVisualStyleBackColor = true;
+            btn_deletar.UseVisualStyleBackColor = false;
             // 
             // btn_logout
             // 
@@ -211,30 +197,50 @@
             // 
             // input_plano
             // 
+            input_plano.Font = new Font("Arial", 10F);
             input_plano.FormattingEnabled = true;
             input_plano.Items.AddRange(new object[] { "Fitness Basic", "Fitness Plus", "Fitness Master" });
-            input_plano.Location = new Point(12, 269);
+            input_plano.Location = new Point(12, 243);
             input_plano.Name = "input_plano";
-            input_plano.Size = new Size(190, 26);
+            input_plano.Size = new Size(190, 24);
             input_plano.TabIndex = 32;
             // 
             // gv_alunos
             // 
             gv_alunos.BackgroundColor = SystemColors.ButtonHighlight;
             gv_alunos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gv_alunos.Location = new Point(229, 96);
+            gv_alunos.Location = new Point(229, 69);
             gv_alunos.Name = "gv_alunos";
-            gv_alunos.Size = new Size(658, 381);
+            gv_alunos.Size = new Size(658, 198);
             gv_alunos.TabIndex = 33;
             // 
             // input_data
             // 
             input_data.CalendarFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            input_data.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            input_data.Location = new Point(12, 210);
+            input_data.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            input_data.Location = new Point(12, 184);
             input_data.Name = "input_data";
             input_data.Size = new Size(190, 25);
             input_data.TabIndex = 34;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(229, 279);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(658, 198);
+            dataGridView1.TabIndex = 35;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(12, 428);
+            button1.Name = "button1";
+            button1.Size = new Size(83, 37);
+            button1.TabIndex = 36;
+            button1.Text = "Atualizar";
+            button1.UseVisualStyleBackColor = true;
             // 
             // Professor_aluno
             // 
@@ -242,6 +248,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             ClientSize = new Size(899, 525);
+            Controls.Add(button1);
+            Controls.Add(dataGridView1);
             Controls.Add(input_data);
             Controls.Add(gv_alunos);
             Controls.Add(input_plano);
@@ -250,8 +258,6 @@
             Controls.Add(btn_imc);
             Controls.Add(btn_showtreino);
             Controls.Add(input_sexo);
-            Controls.Add(input_treino);
-            Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -266,6 +272,7 @@
             Text = "Professor_screen";
             Load += Professor_aluno_Load;
             ((System.ComponentModel.ISupportInitialize)gv_alunos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -279,8 +286,6 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private TextBox input_treino;
-        private Label label9;
         private ComboBox input_sexo;
         private Button btn_imc;
         private Button btn_showtreino;
@@ -289,5 +294,7 @@
         private ComboBox input_plano;
         private DataGridView gv_alunos;
         private DateTimePicker input_data;
+        private DataGridView dataGridView1;
+        private Button button1;
     }
 }
