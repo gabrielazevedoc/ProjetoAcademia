@@ -162,6 +162,7 @@
             btn_imc.TabIndex = 28;
             btn_imc.Text = "Cadastrar treino";
             btn_imc.UseVisualStyleBackColor = true;
+            btn_imc.Click += btn_imc_Click;
             // 
             // btn_showtreino
             // 
@@ -183,6 +184,7 @@
             btn_deletar.TabIndex = 29;
             btn_deletar.Text = "Deletar";
             btn_deletar.UseVisualStyleBackColor = false;
+            btn_deletar.Click += btn_deletar_Click;
             // 
             // btn_logout
             // 

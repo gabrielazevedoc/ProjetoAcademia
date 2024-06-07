@@ -24,7 +24,7 @@ namespace ProjetoAcademia.View
             InitializeComponent();
         }
 
-        private void LoadData()
+        private void LoadDataAlunos()
         {
             try
             {
@@ -36,6 +36,20 @@ namespace ProjetoAcademia.View
                     adapterAlunos.Fill(tableAlunos);
                     gv_alunos.DataSource = tableAlunos;
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+            }
+        }
+
+        private void LoadDataTreino()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
                     MySqlDataAdapter adapterTreino = new
                         MySqlDataAdapter("SELECT * FROM tb_treino", conn);
                     DataTable tableTreino = new DataTable();
@@ -67,23 +81,70 @@ namespace ProjetoAcademia.View
                     return;
                 }
 
-
-                // Inserindo no banco de dados
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                if (gv_treino.SelectedRows.Count > 0)
                 {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO tb_alunos (nome, CPF, idade, plano, sexo, treino_id) VALUES (@nome, @CPF, @idade, @plano, @sexo, @treino)", conn);
-                    cmd.Parameters.AddWithValue("@nome", nome);
-                    cmd.Parameters.AddWithValue("@CPF", CPF);
-                    cmd.Parameters.AddWithValue("@idade", idade);
-                    cmd.Parameters.AddWithValue("@plano", plano);
-                    cmd.Parameters.AddWithValue("@sexo", sexo);
-                    cmd.ExecuteNonQuery();
+                    int treino_id = Convert.ToInt32(gv_treino.SelectedRows[0].Cells["id"].Value);
+
+
+                    // Inserindo no banco de dados
+                    using (MySqlConnection conn = new MySqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand("INSERT INTO tb_alunos (nome, CPF, idade, plano, sexo, treino_id) VALUES (@nome, @CPF, @idade, @plano, @sexo, @treino_id)", conn);
+                        cmd.Parameters.AddWithValue("@nome", nome);
+                        cmd.Parameters.AddWithValue("@CPF", CPF);
+                        cmd.Parameters.AddWithValue("@idade", idade);
+                        cmd.Parameters.AddWithValue("@plano", plano);
+                        cmd.Parameters.AddWithValue("@sexo", sexo);
+                        cmd.Parameters.AddWithValue("@treino_id", treino_id);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    LoadDataAlunos();
+
+                    MessageBox.Show("Aluno cadastrado com sucesso!");
                 }
+                else
+                {
+                    MessageBox.Show("Por favor, selecione um treino.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+            }
 
-                LoadData();
+        }
 
-                MessageBox.Show("Aluno cadastrado com sucesso!");
+        private void DeleteData()
+        {
+            try
+            {
+
+                if (gv_alunos.SelectedRows.Count > 0)
+                {
+                    int aluno_id = Convert.ToInt32(gv_alunos.SelectedRows[0].Cells["id"].Value);
+
+
+                    using (MySqlConnection conn = new MySqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand("DELETE FROM tb_alunos WHERE id=@aluno_id", conn);
+                        cmd.Parameters.AddWithValue("@aluno_id", aluno_id);
+
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+
+                    LoadDataAlunos();
+
+                    MessageBox.Show("Aluno deletado do sistema com sucesso!");
+
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecione um aluno.");
+                }
             }
             catch (Exception ex)
             {
@@ -93,7 +154,8 @@ namespace ProjetoAcademia.View
 
         private void Professor_aluno_Load(object sender, EventArgs e)
         {
-            LoadData();
+            LoadDataAlunos();
+            LoadDataTreino();
         }
 
         private void btn_cadastrar_Click(object sender, EventArgs e)
@@ -108,5 +170,14 @@ namespace ProjetoAcademia.View
             this.Hide();
         }
 
+        private void btn_deletar_Click(object sender, EventArgs e)
+        {
+            DeleteData();
+        }
+
+        private void btn_imc_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

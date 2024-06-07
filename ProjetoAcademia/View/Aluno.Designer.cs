@@ -28,22 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btn_sair = new Button();
             label1 = new Label();
             label2 = new Label();
             listView2 = new ListView();
             btn_logout = new Button();
             lv_aluno = new ListView();
             SuspendLayout();
-            // 
-            // btn_sair
-            // 
-            btn_sair.Location = new Point(30, 533);
-            btn_sair.Name = "btn_sair";
-            btn_sair.Size = new Size(74, 28);
-            btn_sair.TabIndex = 5;
-            btn_sair.Text = "Sair";
-            btn_sair.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -78,15 +68,16 @@
             // 
             // btn_logout
             // 
-            btn_logout.BackColor = Color.Black;
+            btn_logout.BackColor = Color.Transparent;
             btn_logout.Font = new Font("Segoe UI", 12F);
-            btn_logout.ForeColor = Color.Transparent;
+            btn_logout.ForeColor = Color.Black;
             btn_logout.Location = new Point(806, 484);
             btn_logout.Name = "btn_logout";
             btn_logout.Size = new Size(81, 29);
             btn_logout.TabIndex = 11;
             btn_logout.Text = "Sair";
             btn_logout.UseVisualStyleBackColor = false;
+            btn_logout.Click += new EventHandler(btn_logout_Click);
             // 
             // lv_aluno
             // 
@@ -96,6 +87,10 @@
             lv_aluno.TabIndex = 12;
             lv_aluno.UseCompatibleStateImageBehavior = false;
             lv_aluno.View = System.Windows.Forms.View.Details;
+            lv_aluno.FullRowSelect = true;
+            lv_aluno.Columns.Add("Nome", 150, HorizontalAlignment.Left);
+            lv_aluno.Columns.Add("CPF", 100, HorizontalAlignment.Left);
+            lv_aluno.Columns.Add("Plano", 100, HorizontalAlignment.Left);
             // 
             // Aluno
             // 
@@ -107,18 +102,16 @@
             Controls.Add(listView2);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btn_sair);
             Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
             MaximizeBox = false;
             Name = "Aluno";
-            Text = "Treino";
+            Text = "Aluno";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Button btn_sair;
         private Label label1;
         private Label label2;
         private ListView listView2;
