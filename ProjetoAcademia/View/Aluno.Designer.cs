@@ -95,6 +95,7 @@
             lv_aluno.Size = new Size(875, 162);
             lv_aluno.TabIndex = 12;
             lv_aluno.UseCompatibleStateImageBehavior = false;
+            lv_aluno.View = System.Windows.Forms.View.Details;
             // 
             // Aluno
             // 
@@ -122,6 +123,6 @@
         private Label label2;
         private ListView listView2;
         private Button btn_logout;
-        private ListView lv_aluno;
+        public ListView lv_aluno;
     }
 }

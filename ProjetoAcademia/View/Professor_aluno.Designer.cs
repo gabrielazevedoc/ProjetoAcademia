@@ -44,10 +44,10 @@
             input_plano = new ComboBox();
             gv_alunos = new DataGridView();
             input_data = new DateTimePicker();
-            dataGridView1 = new DataGridView();
+            gv_treino = new DataGridView();
             button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)gv_alunos).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gv_treino).BeginInit();
             SuspendLayout();
             // 
             // btn_cadastrar
@@ -223,14 +223,14 @@
             input_data.Size = new Size(190, 25);
             input_data.TabIndex = 34;
             // 
-            // dataGridView1
+            // gv_treino
             // 
-            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(229, 279);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(658, 198);
-            dataGridView1.TabIndex = 35;
+            gv_treino.BackgroundColor = SystemColors.ButtonHighlight;
+            gv_treino.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gv_treino.Location = new Point(229, 279);
+            gv_treino.Name = "gv_treino";
+            gv_treino.Size = new Size(658, 198);
+            gv_treino.TabIndex = 35;
             // 
             // button1
             // 
@@ -249,7 +249,7 @@
             BackColor = Color.Gray;
             ClientSize = new Size(899, 525);
             Controls.Add(button1);
-            Controls.Add(dataGridView1);
+            Controls.Add(gv_treino);
             Controls.Add(input_data);
             Controls.Add(gv_alunos);
             Controls.Add(input_plano);
@@ -272,7 +272,7 @@
             Text = "Professor_screen";
             Load += Professor_aluno_Load;
             ((System.ComponentModel.ISupportInitialize)gv_alunos).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gv_treino).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -294,7 +294,7 @@
         private ComboBox input_plano;
         private DataGridView gv_alunos;
         private DateTimePicker input_data;
-        private DataGridView dataGridView1;
+        private DataGridView gv_treino;
         private Button button1;
     }
 }

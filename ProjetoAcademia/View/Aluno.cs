@@ -1,15 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using MySql.Data.MySqlClient;
 
 namespace ProjetoAcademia.View
 {
@@ -21,17 +10,25 @@ namespace ProjetoAcademia.View
             .ConnectionString;
 
         private int AlunoId;
+
         public Aluno(int AlunoId)
         {
             InitializeComponent();
-            MySqlConnection conn = new MySqlConnection(connectionString);
             this.AlunoId = AlunoId;
-            LoadAlunoData();
+            ConfigureListView();
+            LoadAlunoData(); 
+        }
+
+        private void ConfigureListView()
+        {
+            lv_aluno.FullRowSelect = true;
+            lv_aluno.Columns.Add("Nome", 150, HorizontalAlignment.Left);
+            lv_aluno.Columns.Add("CPF", 100, HorizontalAlignment.Left);
+            lv_aluno.Columns.Add("Plano", 100, HorizontalAlignment.Left);
         }
 
         private void LoadAlunoData()
         {
-
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 try
@@ -64,5 +61,12 @@ namespace ProjetoAcademia.View
                 }
             }
         }
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
     }
 }

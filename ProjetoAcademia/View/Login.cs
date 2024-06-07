@@ -35,7 +35,7 @@ namespace ProjetoAcademia
                     using (MySqlConnection conn = new MySqlConnection(connectionString))
                     {
                         conn.Open();
-                        string query = "SELECT * FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
+                        string query = "SELECT id FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
                         MySqlCommand cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@nome", nome);
                         cmd.Parameters.AddWithValue("@CPF", CPF);
@@ -47,6 +47,10 @@ namespace ProjetoAcademia
                             Aluno aluno = new Aluno(AlunoId);
                             aluno.Show();
                             this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Aluno não encontrado.");
                         }
                         conn.Close();
                     }
@@ -90,7 +94,20 @@ namespace ProjetoAcademia
                         }
                     }
 
-                    return LoginResult.Aluno;
+                    string query = "SELECT COUNT(1) FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@nome", nome);
+                    cmd.Parameters.AddWithValue("@CPF", CPF);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        return LoginResult.Aluno;
+                    }
+                    else
+                    {
+                        return LoginResult.Invalido;
+                    }
                 }
                 catch (Exception ex)
                 {

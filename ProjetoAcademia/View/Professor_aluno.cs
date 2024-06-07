@@ -26,51 +26,69 @@ namespace ProjetoAcademia.View
 
         private void LoadData()
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                MySqlDataAdapter adapter = new
-                    MySqlDataAdapter("SELECT * FROM tb_alunos", conn);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-                gv_alunos.DataSource = table;
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    MySqlDataAdapter adapterAlunos = new
+                        MySqlDataAdapter("SELECT * FROM tb_alunos", conn);
+                    DataTable tableAlunos = new DataTable();
+                    adapterAlunos.Fill(tableAlunos);
+                    gv_alunos.DataSource = tableAlunos;
+
+                    MySqlDataAdapter adapterTreino = new
+                        MySqlDataAdapter("SELECT * FROM tb_treino", conn);
+                    DataTable tableTreino = new DataTable();
+                    adapterTreino.Fill(tableTreino);
+                    gv_treino.DataSource = tableTreino;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
             }
         }
 
         private void CreateData()
         {
-            string nome = input_nome.Text;
-            string CPF = input_CPF.Text;
-            DateTime nascimento = input_data.Value;
-            string plano = input_plano.Text;
-            string sexo = input_sexo.Text;
-            string treino = input_treino.Text;
-
-            int idade = Pessoa.CalcularIdade(nascimento);
-
-            if (idade < 0 && idade > 120)
+            try
             {
-                MessageBox.Show("Data de nascimento inválida!");
-                return;
+                string nome = input_nome.Text;
+                string CPF = input_CPF.Text;
+                DateTime nascimento = input_data.Value;
+                string plano = input_plano.Text;
+                string sexo = input_sexo.Text;
+
+                int idade = Pessoa.CalcularIdade(nascimento);
+
+                if (idade < 0 && idade > 120)
+                {
+                    MessageBox.Show("Data de nascimento inválida!");
+                    return;
+                }
+
+
+                // Inserindo no banco de dados
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO tb_alunos (nome, CPF, idade, plano, sexo, treino_id) VALUES (@nome, @CPF, @idade, @plano, @sexo, @treino)", conn);
+                    cmd.Parameters.AddWithValue("@nome", nome);
+                    cmd.Parameters.AddWithValue("@CPF", CPF);
+                    cmd.Parameters.AddWithValue("@idade", idade);
+                    cmd.Parameters.AddWithValue("@plano", plano);
+                    cmd.Parameters.AddWithValue("@sexo", sexo);
+                    cmd.ExecuteNonQuery();
+                }
+
+                LoadData();
+
+                MessageBox.Show("Aluno cadastrado com sucesso!");
             }
-
-
-            // Inserindo no banco de dados
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            catch (Exception ex)
             {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO tb_alunos (nome, CPF, idade, plano, sexo, treino_id) VALUES (@nome, @CPF, @idade, @plano, @sexo, @treino)", conn);
-                cmd.Parameters.AddWithValue("@nome", nome);
-                cmd.Parameters.AddWithValue("@CPF", CPF);
-                cmd.Parameters.AddWithValue("@idade", idade);
-                cmd.Parameters.AddWithValue("@plano", plano);
-                cmd.Parameters.AddWithValue("@sexo", sexo);
-                cmd.Parameters.AddWithValue("@treino", treino);
-                cmd.ExecuteNonQuery();
+                MessageBox.Show("Erro: " + ex.Message);
             }
-
-            LoadData();
-
-            MessageBox.Show("Aluno cadastrado com sucesso!");
         }
 
         private void Professor_aluno_Load(object sender, EventArgs e)
@@ -89,5 +107,6 @@ namespace ProjetoAcademia.View
             login.Show();
             this.Hide();
         }
+
     }
 }
