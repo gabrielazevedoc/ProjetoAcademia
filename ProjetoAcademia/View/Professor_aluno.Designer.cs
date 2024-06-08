@@ -37,7 +37,7 @@
             label7 = new Label();
             label8 = new Label();
             input_sexo = new ComboBox();
-            btn_imc = new Button();
+            btn_cadTreino = new Button();
             btn_showtreino = new Button();
             btn_deletar = new Button();
             btn_logout = new Button();
@@ -45,7 +45,7 @@
             gv_alunos = new DataGridView();
             input_data = new DateTimePicker();
             gv_treino = new DataGridView();
-            button1 = new Button();
+            btn_Atualizar = new Button();
             ((System.ComponentModel.ISupportInitialize)gv_alunos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gv_treino).BeginInit();
             SuspendLayout();
@@ -153,16 +153,16 @@
             input_sexo.Size = new Size(190, 24);
             input_sexo.TabIndex = 25;
             // 
-            // btn_imc
+            // btn_cadTreino
             // 
-            btn_imc.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_imc.Location = new Point(454, 12);
-            btn_imc.Name = "btn_imc";
-            btn_imc.Size = new Size(117, 27);
-            btn_imc.TabIndex = 28;
-            btn_imc.Text = "Cadastrar treino";
-            btn_imc.UseVisualStyleBackColor = true;
-            btn_imc.Click += btn_imc_Click;
+            btn_cadTreino.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_cadTreino.Location = new Point(454, 12);
+            btn_cadTreino.Name = "btn_cadTreino";
+            btn_cadTreino.Size = new Size(117, 27);
+            btn_cadTreino.TabIndex = 28;
+            btn_cadTreino.Text = "Cadastrar treino";
+            btn_cadTreino.UseVisualStyleBackColor = true;
+            btn_cadTreino.Click += btn_cadTreino_Click;
             // 
             // btn_showtreino
             // 
@@ -215,6 +215,7 @@
             gv_alunos.Name = "gv_alunos";
             gv_alunos.Size = new Size(658, 198);
             gv_alunos.TabIndex = 33;
+            gv_alunos.SelectionChanged += gv_alunos_SelectionChanged;
             // 
             // input_data
             // 
@@ -234,15 +235,16 @@
             gv_treino.Size = new Size(658, 198);
             gv_treino.TabIndex = 35;
             // 
-            // button1
+            // btn_Atualizar
             // 
-            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(12, 428);
-            button1.Name = "button1";
-            button1.Size = new Size(83, 37);
-            button1.TabIndex = 36;
-            button1.Text = "Atualizar";
-            button1.UseVisualStyleBackColor = true;
+            btn_Atualizar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_Atualizar.Location = new Point(12, 428);
+            btn_Atualizar.Name = "btn_Atualizar";
+            btn_Atualizar.Size = new Size(83, 37);
+            btn_Atualizar.TabIndex = 36;
+            btn_Atualizar.Text = "Atualizar";
+            btn_Atualizar.UseVisualStyleBackColor = true;
+            btn_Atualizar.Click += btn_Atualizar_Click;
             // 
             // Professor_aluno
             // 
@@ -250,14 +252,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             ClientSize = new Size(899, 525);
-            Controls.Add(button1);
+            Controls.Add(btn_Atualizar);
             Controls.Add(gv_treino);
             Controls.Add(input_data);
             Controls.Add(gv_alunos);
             Controls.Add(input_plano);
             Controls.Add(btn_logout);
             Controls.Add(btn_deletar);
-            Controls.Add(btn_imc);
+            Controls.Add(btn_cadTreino);
             Controls.Add(btn_showtreino);
             Controls.Add(input_sexo);
             Controls.Add(label8);
@@ -289,7 +291,7 @@
         private Label label7;
         private Label label8;
         private ComboBox input_sexo;
-        private Button btn_imc;
+        private Button btn_cadTreino;
         private Button btn_showtreino;
         private Button btn_deletar;
         private Button btn_logout;
@@ -297,6 +299,6 @@
         private DataGridView gv_alunos;
         private DateTimePicker input_data;
         private DataGridView gv_treino;
-        private Button button1;
+        private Button btn_Atualizar;
     }
 }

@@ -98,6 +98,7 @@ namespace ProjetoAcademia.View
                         cmd.Parameters.AddWithValue("@sexo", sexo);
                         cmd.Parameters.AddWithValue("@treino_id", treino_id);
                         cmd.ExecuteNonQuery();
+                        conn.Close();
                     }
 
                     LoadDataAlunos();
@@ -152,6 +153,97 @@ namespace ProjetoAcademia.View
             }
         }
 
+        private void gv_alunos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (gv_alunos.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = gv_alunos.SelectedRows[0];
+                input_nome.Text = row.Cells["nome"].Value.ToString();
+                input_CPF.Text = row.Cells["CPF"].Value.ToString();
+                int idade = Convert.ToInt32(row.Cells["idade"].Value);
+                input_data.Value = ConverterIdadeParaDataNascimento(idade);
+                input_plano.Text = row.Cells["plano"].Value.ToString();
+                input_sexo.Text = row.Cells["Sexo"].Value.ToString();
+            }
+        }
+
+        public static DateTime ConverterIdadeParaDataNascimento(int idade)
+        {
+            DateTime dataAtual = DateTime.Now;
+            DateTime dataNascimento = dataAtual.AddYears(-idade);
+
+            // Ajuste a data de nascimento se o aniversário deste ano ainda não tiver ocorrido
+            if (dataNascimento > dataAtual)
+            {
+                dataNascimento = dataNascimento.AddYears(-1);
+            }
+
+            return dataNascimento;
+        }
+
+        private void UpdateDataAlunos()
+        {
+            try
+            {
+                if (gv_alunos.SelectedRows.Count > 0)
+                {
+                    string nome = input_nome.Text;
+                    string CPF = input_CPF.Text;
+                    DateTime nascimento = input_data.Value;
+                    string plano = input_plano.Text;
+                    string sexo = input_sexo.Text;
+
+                    int aluno_id = Convert.ToInt32(gv_alunos.SelectedRows[0].Cells["id"].Value);
+
+                    int idade = Pessoa.CalcularIdade(nascimento);
+
+                    if (idade < 0 && idade > 120)
+                    {
+                        MessageBox.Show("Data de nascimento inválida!");
+                        return;
+                    }
+
+                    if (gv_treino.SelectedRows.Count > 0)
+                    {
+                        int treino_id = Convert.ToInt32(gv_treino.SelectedRows[0].Cells["id"].Value);
+
+
+                        // Atualizando o banco de dados
+                        using (MySqlConnection conn = new MySqlConnection(connectionString))
+                        {
+                            conn.Open();
+                            MySqlCommand cmd = new MySqlCommand("UPDATE tb_alunos SET nome=@nome, CPF=@CPF, idade=@idade, plano=@plano, sexo=@sexo, treino_id=@treino_id WHERE id=@aluno_id", conn);
+                            cmd.Parameters.AddWithValue("@nome", nome);
+                            cmd.Parameters.AddWithValue("@CPF", CPF);
+                            cmd.Parameters.AddWithValue("@idade", idade);
+                            cmd.Parameters.AddWithValue("@plano", plano);
+                            cmd.Parameters.AddWithValue("@sexo", sexo);
+                            cmd.Parameters.AddWithValue("@treino_id", treino_id);
+                            cmd.Parameters.AddWithValue("@aluno_id", aluno_id);
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+
+                        LoadDataAlunos();
+
+                        MessageBox.Show("Aluno atualizado com sucesso!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor, selecione um treino.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecione um aluno para atualizar");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+            }
+        }
+
         private void Professor_aluno_Load(object sender, EventArgs e)
         {
             LoadDataAlunos();
@@ -175,9 +267,16 @@ namespace ProjetoAcademia.View
             DeleteData();
         }
 
-        private void btn_imc_Click(object sender, EventArgs e)
+        private void btn_cadTreino_Click(object sender, EventArgs e)
         {
+            Professor_treino professor_Treino = new Professor_treino();
+            professor_Treino.Show();
+            this.Hide();
+        }
 
+        private void btn_Atualizar_Click(object sender, EventArgs e)
+        {
+            UpdateDataAlunos();
         }
     }
 }
