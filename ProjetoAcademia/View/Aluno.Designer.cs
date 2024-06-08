@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             label2 = new Label();
-            listView2 = new ListView();
+            lv_treino = new ListView();
             btn_logout = new Button();
             lv_aluno = new ListView();
             SuspendLayout();
@@ -57,14 +57,17 @@
             label2.TabIndex = 9;
             label2.Text = "Treino";
             // 
-            // listView2
+            // lv_treino
             // 
-            listView2.Font = new Font("Segoe UI", 12F);
-            listView2.Location = new Point(12, 219);
-            listView2.Name = "listView2";
-            listView2.Size = new Size(875, 220);
-            listView2.TabIndex = 10;
-            listView2.UseCompatibleStateImageBehavior = false;
+            lv_treino.Font = new Font("Segoe UI", 12F);
+            lv_treino.Location = new Point(12, 219);
+            lv_treino.Name = "lv_treino";
+            lv_treino.Size = new Size(875, 220);
+            lv_treino.TabIndex = 10;
+            lv_treino.UseCompatibleStateImageBehavior = false;
+            lv_treino.View = System.Windows.Forms.View.Details;
+            lv_treino.Columns.Add("Objetivo", 150, HorizontalAlignment.Left);
+            lv_treino.Columns.Add("Intensidade", 150, HorizontalAlignment.Left);
             // 
             // btn_logout
             // 
@@ -77,20 +80,22 @@
             btn_logout.TabIndex = 11;
             btn_logout.Text = "Sair";
             btn_logout.UseVisualStyleBackColor = false;
-            btn_logout.Click += new EventHandler(btn_logout_Click);
+            btn_logout.Click += btn_logout_Click;
             // 
             // lv_aluno
             // 
+            lv_aluno.FullRowSelect = true;
             lv_aluno.Location = new Point(12, 33);
             lv_aluno.Name = "lv_aluno";
             lv_aluno.Size = new Size(875, 162);
             lv_aluno.TabIndex = 12;
             lv_aluno.UseCompatibleStateImageBehavior = false;
             lv_aluno.View = System.Windows.Forms.View.Details;
-            lv_aluno.FullRowSelect = true;
             lv_aluno.Columns.Add("Nome", 150, HorizontalAlignment.Left);
-            lv_aluno.Columns.Add("CPF", 100, HorizontalAlignment.Left);
-            lv_aluno.Columns.Add("Plano", 100, HorizontalAlignment.Left);
+            lv_aluno.Columns.Add("CPF", 150, HorizontalAlignment.Left);
+            lv_aluno.Columns.Add("Idade", 150, HorizontalAlignment.Left);
+            lv_aluno.Columns.Add("Plano", 150, HorizontalAlignment.Left);
+            lv_aluno.Columns.Add("Sexo", 150, HorizontalAlignment.Left);
             // 
             // Aluno
             // 
@@ -99,7 +104,7 @@
             ClientSize = new Size(899, 525);
             Controls.Add(lv_aluno);
             Controls.Add(btn_logout);
-            Controls.Add(listView2);
+            Controls.Add(lv_treino);
             Controls.Add(label2);
             Controls.Add(label1);
             Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -114,7 +119,7 @@
         #endregion
         private Label label1;
         private Label label2;
-        private ListView listView2;
+        private ListView lv_treino;
         private Button btn_logout;
         public ListView lv_aluno;
     }

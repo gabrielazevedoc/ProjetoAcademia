@@ -16,6 +16,7 @@ namespace ProjetoAcademia.View
             InitializeComponent();
             this.AlunoId = AlunoId;
             LoadAlunoData(); 
+            LoadTreinoData();
         }
 
         private void LoadAlunoData()
@@ -26,7 +27,7 @@ namespace ProjetoAcademia.View
                 {
                     conn.Open();
 
-                    string query = "SELECT nome, cpf, plano FROM tb_alunos WHERE id=@AlunoId";
+                    string query = "SELECT nome, cpf, idade, plano, sexo FROM tb_alunos WHERE id=@AlunoId";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@AlunoId", AlunoId);
 
@@ -35,13 +36,50 @@ namespace ProjetoAcademia.View
                     {
                         string nomeAluno = reader.GetString("nome");
                         string cpfAluno = reader.GetString("cpf");
+                        int idadeAluno = reader.GetInt32(reader.GetOrdinal("idade"));
                         string planoAluno = reader.GetString("plano");
+                        string sexoAluno = reader.GetString("sexo");
 
                         ListViewItem item = new ListViewItem(nomeAluno);
                         item.SubItems.Add(cpfAluno);
+                        item.SubItems.Add(idadeAluno.ToString());
                         item.SubItems.Add(planoAluno);
+                        item.SubItems.Add(sexoAluno);
 
                         lv_aluno.Items.Add(item);
+                    }
+
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message);
+                }
+            }
+        }
+
+        private void LoadTreinoData()
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = "SELECT objetivo, intensidade FROM tb_treino WHERE id=@AlunoId";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@AlunoId", AlunoId);
+
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        string objetivoTreino = reader.GetString("objetivo");
+                        string intensidadeTreino = reader.GetString("intensidade");
+
+                        ListViewItem item = new ListViewItem(objetivoTreino);
+                        item.SubItems.Add(intensidadeTreino);
+
+                        lv_treino.Items.Add(item);
                     }
 
                     conn.Close();
