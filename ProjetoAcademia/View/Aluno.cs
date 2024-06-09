@@ -38,7 +38,7 @@ namespace ProjetoAcademia.View
                     {
                         string nomeAluno = reader.GetString("nome");
                         string cpfAluno = reader.GetString("cpf");
-                        int idadeAluno = reader.GetInt32(reader.GetOrdinal("idade"));
+                        int idadeAluno = reader.GetInt32("idade");
                         string planoAluno = reader.GetString("plano");
                         string sexoAluno = reader.GetString("sexo");
 

@@ -28,26 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listView1 = new ListView();
             btn_logout = new Button();
             btn_deletar = new Button();
-            btn_imc = new Button();
-            btn_showtreino = new Button();
+            btn_cadTreino = new Button();
+            btn_cadAluno = new Button();
             label4 = new Label();
-            input_equipamento = new TextBox();
             label2 = new Label();
             btn_cadastrar = new Button();
-            input_rep = new TextBox();
-            button1 = new Button();
+            btn_atualizar = new Button();
+            gv_treinos = new DataGridView();
+            cb_objetivo = new ComboBox();
+            cb_intensidade = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)gv_treinos).BeginInit();
             SuspendLayout();
-            // 
-            // listView1
-            // 
-            listView1.Location = new Point(208, 96);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(679, 381);
-            listView1.TabIndex = 49;
-            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // btn_logout
             // 
@@ -68,25 +61,26 @@
             btn_deletar.Text = "Deletar";
             btn_deletar.UseVisualStyleBackColor = false;
             // 
-            // btn_imc
+            // btn_cadTreino
             // 
-            btn_imc.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_imc.Location = new Point(154, 12);
-            btn_imc.Name = "btn_imc";
-            btn_imc.Size = new Size(132, 27);
-            btn_imc.TabIndex = 46;
-            btn_imc.Text = "Cadastrar treino";
-            btn_imc.UseVisualStyleBackColor = true;
+            btn_cadTreino.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_cadTreino.Location = new Point(444, 12);
+            btn_cadTreino.Name = "btn_cadTreino";
+            btn_cadTreino.Size = new Size(132, 27);
+            btn_cadTreino.TabIndex = 46;
+            btn_cadTreino.Text = "Cadastrar treino";
+            btn_cadTreino.UseVisualStyleBackColor = true;
             // 
-            // btn_showtreino
+            // btn_cadAluno
             // 
-            btn_showtreino.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btn_showtreino.Location = new Point(12, 12);
-            btn_showtreino.Name = "btn_showtreino";
-            btn_showtreino.Size = new Size(136, 27);
-            btn_showtreino.TabIndex = 45;
-            btn_showtreino.Text = "Cadastrar aluno";
-            btn_showtreino.UseVisualStyleBackColor = true;
+            btn_cadAluno.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btn_cadAluno.Location = new Point(302, 12);
+            btn_cadAluno.Name = "btn_cadAluno";
+            btn_cadAluno.Size = new Size(136, 27);
+            btn_cadAluno.TabIndex = 45;
+            btn_cadAluno.Text = "Cadastrar aluno";
+            btn_cadAluno.UseVisualStyleBackColor = true;
+            btn_cadAluno.Click += btn_showtreino_Click;
             // 
             // label4
             // 
@@ -96,17 +90,10 @@
             label4.ForeColor = SystemColors.ControlLightLight;
             label4.Location = new Point(12, 130);
             label4.Name = "label4";
-            label4.Size = new Size(95, 19);
+            label4.Size = new Size(98, 19);
             label4.TabIndex = 35;
-            label4.Text = "Repetições";
+            label4.Text = "Intensidade";
             label4.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // input_equipamento
-            // 
-            input_equipamento.Location = new Point(12, 96);
-            input_equipamento.Name = "input_equipamento";
-            input_equipamento.Size = new Size(180, 23);
-            input_equipamento.TabIndex = 34;
             // 
             // label2
             // 
@@ -116,9 +103,9 @@
             label2.ForeColor = SystemColors.ControlLightLight;
             label2.Location = new Point(12, 74);
             label2.Name = "label2";
-            label2.Size = new Size(111, 19);
+            label2.Size = new Size(72, 19);
             label2.TabIndex = 33;
-            label2.Text = "Equipamento";
+            label2.Text = "Objetivo";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // btn_cadastrar
@@ -131,21 +118,40 @@
             btn_cadastrar.Text = "Cadastrar";
             btn_cadastrar.UseVisualStyleBackColor = false;
             // 
-            // input_rep
+            // btn_atualizar
             // 
-            input_rep.Location = new Point(12, 152);
-            input_rep.Name = "input_rep";
-            input_rep.Size = new Size(180, 23);
-            input_rep.TabIndex = 50;
+            btn_atualizar.Location = new Point(15, 280);
+            btn_atualizar.Name = "btn_atualizar";
+            btn_atualizar.Size = new Size(82, 37);
+            btn_atualizar.TabIndex = 51;
+            btn_atualizar.Text = "Atualizar";
+            btn_atualizar.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // gv_treinos
             // 
-            button1.Location = new Point(15, 280);
-            button1.Name = "button1";
-            button1.Size = new Size(82, 37);
-            button1.TabIndex = 51;
-            button1.Text = "Atualizar";
-            button1.UseVisualStyleBackColor = true;
+            gv_treinos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gv_treinos.Location = new Point(216, 96);
+            gv_treinos.Name = "gv_treinos";
+            gv_treinos.Size = new Size(671, 381);
+            gv_treinos.TabIndex = 52;
+            // 
+            // cb_objetivo
+            // 
+            cb_objetivo.FormattingEnabled = true;
+            cb_objetivo.Items.AddRange(new object[] { "Emagrecer", "Fortalescimento Muscular", "Hipertrofia Muscular", "Desenvolver área específica" });
+            cb_objetivo.Location = new Point(12, 96);
+            cb_objetivo.Name = "cb_objetivo";
+            cb_objetivo.Size = new Size(193, 23);
+            cb_objetivo.TabIndex = 53;
+            // 
+            // cb_intensidade
+            // 
+            cb_intensidade.FormattingEnabled = true;
+            cb_intensidade.Items.AddRange(new object[] { "Alta", "Média", "Baixa" });
+            cb_intensidade.Location = new Point(12, 152);
+            cb_intensidade.Name = "cb_intensidade";
+            cb_intensidade.Size = new Size(193, 23);
+            cb_intensidade.TabIndex = 54;
             // 
             // Professor_treino
             // 
@@ -153,30 +159,29 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             ClientSize = new Size(899, 525);
-            Controls.Add(button1);
-            Controls.Add(input_rep);
-            Controls.Add(listView1);
+            Controls.Add(cb_intensidade);
+            Controls.Add(cb_objetivo);
+            Controls.Add(gv_treinos);
+            Controls.Add(btn_atualizar);
             Controls.Add(btn_logout);
             Controls.Add(btn_deletar);
-            Controls.Add(btn_imc);
-            Controls.Add(btn_showtreino);
+            Controls.Add(btn_cadTreino);
+            Controls.Add(btn_cadAluno);
             Controls.Add(label4);
-            Controls.Add(input_equipamento);
             Controls.Add(label2);
             Controls.Add(btn_cadastrar);
             Name = "Professor_treino";
             Text = "Professor_treino";
+            ((System.ComponentModel.ISupportInitialize)gv_treinos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ListView listView1;
         private Button btn_logout;
         private Button btn_deletar;
-        private Button btn_imc;
-        private Button btn_showtreino;
+        private Button btn_cadTreino;
+        private Button btn_cadAluno;
         private ComboBox comboBox1;
         private TextBox textBox8;
         private Label label9;
@@ -187,10 +192,11 @@
         private Label label6;
         private TextBox textBox3;
         private Label label4;
-        private TextBox input_equipamento;
         private Label label2;
         private Button btn_cadastrar;
-        private TextBox input_rep;
-        private Button button1;
+        private Button btn_atualizar;
+        private DataGridView gv_treinos;
+        private ComboBox cb_objetivo;
+        private ComboBox cb_intensidade;
     }
 }
