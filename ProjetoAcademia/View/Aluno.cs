@@ -10,11 +10,13 @@ namespace ProjetoAcademia.View
             .ConnectionString;
 
         private int AlunoId;
+        private int TreinoId;
 
-        public Aluno(int AlunoId)
+        public Aluno(int AlunoId, int TreinoId)
         {
             InitializeComponent();
             this.AlunoId = AlunoId;
+            this.TreinoId = TreinoId;
             LoadAlunoData(); 
             LoadTreinoData();
         }
@@ -66,9 +68,9 @@ namespace ProjetoAcademia.View
                 {
                     conn.Open();
 
-                    string query = "SELECT objetivo, intensidade FROM tb_treino WHERE id=@AlunoId";
+                    string query = "SELECT objetivo, intensidade FROM tb_treino WHERE id=@TreinoId";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@AlunoId", AlunoId);
+                    cmd.Parameters.AddWithValue("@TreinoId", TreinoId);
 
                     MySqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())

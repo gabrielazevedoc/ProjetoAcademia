@@ -35,7 +35,7 @@ namespace ProjetoAcademia
                     using (MySqlConnection conn = new MySqlConnection(connectionString))
                     {
                         conn.Open();
-                        string query = "SELECT id FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
+                        string query = "SELECT id, treino_id FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
                         MySqlCommand cmd = new MySqlCommand(query, conn);
                         cmd.Parameters.AddWithValue("@nome", nome);
                         cmd.Parameters.AddWithValue("@CPF", CPF);
@@ -44,7 +44,8 @@ namespace ProjetoAcademia
                         if (reader.Read())
                         {
                             int AlunoId = reader.GetInt32("id");
-                            Aluno aluno = new Aluno(AlunoId);
+                            int TreinoId = reader.GetInt32("treino_id");
+                            Aluno aluno = new Aluno(AlunoId, TreinoId);
                             aluno.Show();
                             this.Hide();
                         }
