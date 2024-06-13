@@ -95,6 +95,7 @@ namespace ProjetoAcademia
                         }
                     }
 
+                    //verificar se o aluno digitado existe no banco de dados
                     string query = "SELECT COUNT(1) FROM tb_alunos WHERE nome=@nome AND CPF=@CPF";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@nome", nome);

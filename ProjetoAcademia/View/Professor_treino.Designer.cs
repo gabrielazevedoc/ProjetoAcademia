@@ -50,6 +50,7 @@
             btn_logout.TabIndex = 48;
             btn_logout.Text = "Sair";
             btn_logout.UseVisualStyleBackColor = true;
+            btn_logout.Click += btn_logout_Click;
             // 
             // btn_deletar
             // 
@@ -60,6 +61,7 @@
             btn_deletar.TabIndex = 47;
             btn_deletar.Text = "Deletar";
             btn_deletar.UseVisualStyleBackColor = false;
+            btn_deletar.Click += btn_deletar_Click;
             // 
             // btn_cadTreino
             // 
@@ -117,6 +119,7 @@
             btn_cadastrar.TabIndex = 32;
             btn_cadastrar.Text = "Cadastrar";
             btn_cadastrar.UseVisualStyleBackColor = false;
+            btn_cadastrar.Click += btn_cadastrar_Click;
             // 
             // btn_atualizar
             // 
@@ -126,6 +129,7 @@
             btn_atualizar.TabIndex = 51;
             btn_atualizar.Text = "Atualizar";
             btn_atualizar.UseVisualStyleBackColor = true;
+            btn_atualizar.Click += btn_atualizar_Click;
             // 
             // gv_treinos
             // 

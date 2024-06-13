@@ -67,47 +67,67 @@ namespace ProjetoAcademia.View
         {
             try
             {
-                string nome = input_nome.Text;
-                string CPF = input_CPF.Text;
-                DateTime nascimento = input_data.Value;
-                string plano = input_plano.Text;
-                string sexo = input_sexo.Text;
-
-                int idade = Pessoa.CalcularIdade(nascimento);
-
-                if (idade < 0 && idade > 120)
+                if (string.IsNullOrEmpty(input_nome.Text) || string.IsNullOrEmpty(input_CPF.Text) || input_data.Value.Equals(null)
+                  || string.IsNullOrEmpty(input_plano.Text) || string.IsNullOrEmpty(input_sexo.Text))
                 {
-                    MessageBox.Show("Data de nascimento inválida!");
-                    return;
-                }
-
-                if (gv_treino.SelectedRows.Count > 0)
-                {
-                    int treino_id = Convert.ToInt32(gv_treino.SelectedRows[0].Cells["id"].Value);
-
-
-                    // Inserindo no banco de dados
-                    using (MySqlConnection conn = new MySqlConnection(connectionString))
-                    {
-                        conn.Open();
-                        MySqlCommand cmd = new MySqlCommand("INSERT INTO tb_alunos (nome, CPF, idade, plano, sexo, treino_id) VALUES (@nome, @CPF, @idade, @plano, @sexo, @treino_id)", conn);
-                        cmd.Parameters.AddWithValue("@nome", nome);
-                        cmd.Parameters.AddWithValue("@CPF", CPF);
-                        cmd.Parameters.AddWithValue("@idade", idade);
-                        cmd.Parameters.AddWithValue("@plano", plano);
-                        cmd.Parameters.AddWithValue("@sexo", sexo);
-                        cmd.Parameters.AddWithValue("@treino_id", treino_id);
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
-                    }
-
-                    LoadDataAlunos();
-
-                    MessageBox.Show("Aluno cadastrado com sucesso!");
+                    MessageBox.Show("Por favor, preencha todas as informações");
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, selecione um treino.");
+                    string nome = input_nome.Text;
+                    string CPF = input_CPF.Text;
+                    DateTime nascimento = input_data.Value;
+                    string plano = input_plano.Text;
+                    string sexo = input_sexo.Text;
+
+                    string CPF_valido;
+
+                    if (ValidarCPF(CPF))
+                    {
+                        CPF_valido = CPF;
+                    }
+                    else
+                    {
+                        MessageBox.Show("CPF inválido");
+                        return;
+                    }
+
+                    int idade = Pessoa.CalcularIdade(nascimento);
+
+                    if (idade < 0 && idade > 120)
+                    {
+                        MessageBox.Show("Data de nascimento inválida!");
+                        return;
+                    }
+
+                    if (gv_treino.SelectedRows.Count > 0)
+                    {
+                        int treino_id = Convert.ToInt32(gv_treino.SelectedRows[0].Cells["id"].Value);
+
+
+                        // Inserindo no banco de dados
+                        using (MySqlConnection conn = new MySqlConnection(connectionString))
+                        {
+                            conn.Open();
+                            MySqlCommand cmd = new MySqlCommand("INSERT INTO tb_alunos (nome, CPF, idade, plano, sexo, treino_id) VALUES (@nome, @CPF, @idade, @plano, @sexo, @treino_id)", conn);
+                            cmd.Parameters.AddWithValue("@nome", nome);
+                            cmd.Parameters.AddWithValue("@CPF", CPF_valido);
+                            cmd.Parameters.AddWithValue("@idade", idade);
+                            cmd.Parameters.AddWithValue("@plano", plano);
+                            cmd.Parameters.AddWithValue("@sexo", sexo);
+                            cmd.Parameters.AddWithValue("@treino_id", treino_id);
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+
+                        LoadDataAlunos();
+
+                        MessageBox.Show("Aluno cadastrado com sucesso!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Por favor, selecione um treino.");
+                    }
                 }
             }
             catch (Exception ex)
@@ -181,102 +201,147 @@ namespace ProjetoAcademia.View
             return dataNascimento;
         }
 
-        private void UpdateDataAlunos()
+        private bool ValidarCPF(string CPF)
         {
-            try
+
+            // Remove caracteres não numéricos
+            CPF = CPF.Replace(".", "").Replace("-", "");
+
+            if (CPF.Length != 11)
+                return false;
+
+            // Verifica se todos os dígitos são iguais
+            bool allDigitsSame = true;
+            for (int i = 1; i < 11 && allDigitsSame; i++)
             {
-                if (gv_alunos.SelectedRows.Count > 0)
+                if (CPF[i] != CPF[0])
+                    allDigitsSame = false;
+            }
+            if (allDigitsSame || CPF == "12345678909")
+                return false;
+
+            // Calcula o primeiro dígito verificador
+            int[] multipliers1 = { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int sum = 0;
+            for (int i = 0; i < 9; i++)
+            {
+                sum += int.Parse(CPF[i].ToString()) * multipliers1[i];
+            }
+
+            int remainder = sum % 11;
+            int digit1 = (remainder < 2) ? 0 : 11 - remainder;
+
+            // Calcula o segundo dígito verificador
+            int[] multipliers2 = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            sum = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                sum += int.Parse(CPF[i].ToString()) * multipliers2[i];
+            }
+
+            remainder = sum % 11;
+            int digit2 = (remainder < 2) ? 0 : 11 - remainder;
+
+            // Verifica se os dígitos calculados são iguais aos dígitos do CPF
+            return CPF.EndsWith(digit1.ToString() + digit2.ToString());
+        }
+
+    private void UpdateDataAlunos()
+    {
+        try
+        {
+            if (gv_alunos.SelectedRows.Count > 0)
+            {
+                string nome = input_nome.Text;
+                string CPF = input_CPF.Text;
+                DateTime nascimento = input_data.Value;
+                string plano = input_plano.Text;
+                string sexo = input_sexo.Text;
+
+                int aluno_id = Convert.ToInt32(gv_alunos.SelectedRows[0].Cells["id"].Value);
+
+                int idade = Pessoa.CalcularIdade(nascimento);
+
+                if (idade < 0 && idade > 120)
                 {
-                    string nome = input_nome.Text;
-                    string CPF = input_CPF.Text;
-                    DateTime nascimento = input_data.Value;
-                    string plano = input_plano.Text;
-                    string sexo = input_sexo.Text;
+                    MessageBox.Show("Data de nascimento inválida!");
+                    return;
+                }
 
-                    int aluno_id = Convert.ToInt32(gv_alunos.SelectedRows[0].Cells["id"].Value);
+                if (gv_treino.SelectedRows.Count > 0)
+                {
+                    int treino_id = Convert.ToInt32(gv_treino.SelectedRows[0].Cells["id"].Value);
 
-                    int idade = Pessoa.CalcularIdade(nascimento);
 
-                    if (idade < 0 && idade > 120)
+                    // Atualizando o banco de dados
+                    using (MySqlConnection conn = new MySqlConnection(connectionString))
                     {
-                        MessageBox.Show("Data de nascimento inválida!");
-                        return;
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand("UPDATE tb_alunos SET nome=@nome, CPF=@CPF, idade=@idade, plano=@plano, sexo=@sexo, treino_id=@treino_id WHERE id=@aluno_id", conn);
+                        cmd.Parameters.AddWithValue("@nome", nome);
+                        cmd.Parameters.AddWithValue("@CPF", CPF);
+                        cmd.Parameters.AddWithValue("@idade", idade);
+                        cmd.Parameters.AddWithValue("@plano", plano);
+                        cmd.Parameters.AddWithValue("@sexo", sexo);
+                        cmd.Parameters.AddWithValue("@treino_id", treino_id);
+                        cmd.Parameters.AddWithValue("@aluno_id", aluno_id);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
                     }
 
-                    if (gv_treino.SelectedRows.Count > 0)
-                    {
-                        int treino_id = Convert.ToInt32(gv_treino.SelectedRows[0].Cells["id"].Value);
+                    LoadDataAlunos();
 
-
-                        // Atualizando o banco de dados
-                        using (MySqlConnection conn = new MySqlConnection(connectionString))
-                        {
-                            conn.Open();
-                            MySqlCommand cmd = new MySqlCommand("UPDATE tb_alunos SET nome=@nome, CPF=@CPF, idade=@idade, plano=@plano, sexo=@sexo, treino_id=@treino_id WHERE id=@aluno_id", conn);
-                            cmd.Parameters.AddWithValue("@nome", nome);
-                            cmd.Parameters.AddWithValue("@CPF", CPF);
-                            cmd.Parameters.AddWithValue("@idade", idade);
-                            cmd.Parameters.AddWithValue("@plano", plano);
-                            cmd.Parameters.AddWithValue("@sexo", sexo);
-                            cmd.Parameters.AddWithValue("@treino_id", treino_id);
-                            cmd.Parameters.AddWithValue("@aluno_id", aluno_id);
-                            cmd.ExecuteNonQuery();
-                            conn.Close();
-                        }
-
-                        LoadDataAlunos();
-
-                        MessageBox.Show("Aluno atualizado com sucesso!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Por favor, selecione um treino.");
-                    }
+                    MessageBox.Show("Aluno atualizado com sucesso!");
                 }
                 else
                 {
-                    MessageBox.Show("Selecione um aluno para atualizar");
+                    MessageBox.Show("Por favor, selecione um treino.");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Erro: " + ex.Message);
+                MessageBox.Show("Selecione um aluno para atualizar");
             }
         }
-
-        private void Professor_aluno_Load(object sender, EventArgs e)
+        catch (Exception ex)
         {
-            LoadDataAlunos();
-            LoadDataTreino();
-        }
-
-        private void btn_cadastrar_Click(object sender, EventArgs e)
-        {
-            CreateData();
-        }
-
-        private void btn_logout_Click(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            login.Show();
-            this.Hide();
-        }
-
-        private void btn_deletar_Click(object sender, EventArgs e)
-        {
-            DeleteData();
-        }
-
-        private void btn_cadTreino_Click(object sender, EventArgs e)
-        {
-            Professor_treino professor_Treino = new Professor_treino();
-            professor_Treino.Show();
-            this.Hide();
-        }
-
-        private void btn_Atualizar_Click(object sender, EventArgs e)
-        {
-            UpdateDataAlunos();
+            MessageBox.Show("Erro: " + ex.Message);
         }
     }
+
+    private void Professor_aluno_Load(object sender, EventArgs e)
+    {
+        LoadDataAlunos();
+        LoadDataTreino();
+    }
+
+    private void btn_cadastrar_Click(object sender, EventArgs e)
+    {
+        CreateData();
+    }
+
+    private void btn_logout_Click(object sender, EventArgs e)
+    {
+        Login login = new Login();
+        login.Show();
+        this.Hide();
+    }
+
+    private void btn_deletar_Click(object sender, EventArgs e)
+    {
+        DeleteData();
+    }
+
+    private void btn_cadTreino_Click(object sender, EventArgs e)
+    {
+        Professor_treino professor_Treino = new Professor_treino();
+        professor_Treino.Show();
+        this.Hide();
+    }
+
+    private void btn_Atualizar_Click(object sender, EventArgs e)
+    {
+        UpdateDataAlunos();
+    }
+}
 }
