@@ -170,6 +170,12 @@ namespace ProjetoAcademia.View
             }
         }
 
+        private void EraseFields()
+        {
+            cb_objetivo.Text = string.Empty;
+            cb_intensidade.Text = string.Empty;
+        }
+
         private void btn_showtreino_Click(object sender, EventArgs e)
         {
             Professor_aluno professor_Aluno = new Professor_aluno();
@@ -180,6 +186,7 @@ namespace ProjetoAcademia.View
         private void btn_cadastrar_Click(object sender, EventArgs e)
         {
             CreateDataTreino();
+            EraseFields();
         }
 
         private void btn_deletar_Click(object sender, EventArgs e)
@@ -190,6 +197,7 @@ namespace ProjetoAcademia.View
         private void btn_atualizar_Click(object sender, EventArgs e)
         {
             UpdateData();
+            EraseFields();
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
